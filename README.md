@@ -1,7 +1,18 @@
-# mockgpt
-a mock server like chatgpt
 
-# Usage
+# mockgpt - ChatGPT Mock Flask Application
+
+`mockgpt` is a simple Python package that mocks the behavior of ChatGPT. This package provides a basic Flask-based web application that simulates a ChatGPT API. It is designed for testing, educational purposes, or use in local development environments. You can install it using `pip` or `conda`.
+
+## Features
+
+- **Simulated ChatGPT API**: Mocks interactions with a ChatGPT-like model using predefined responses.
+- **Flask Web Application**: Exposes a RESTful API for interaction.
+- **Installable via pip or conda**: Easy installation through package managers.
+- **Customizable**: Extend the mock responses by modifying the internal logic.
+
+## Installation
+
+### As a Module
 1- run the mock app from the terminal
 ```bash
 source env/bin/activate
@@ -10,92 +21,144 @@ cd mock
 flask run
 ```
 
+### Using pip
 
-## Getting started
+To install the package from PyPI:
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://gitlab.com/hbasafa/mockgpt.git
-git branch -M main
-git push -uf origin main
+```bash
+pip install mockgpt
 ```
 
-## Integrate with your tools
+### Using conda
 
-- [ ] [Set up project integrations](https://gitlab.com/hbasafa/mockgpt/-/settings/integrations)
+To install the package (if available) from conda:
 
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+```bash
+conda install -c conda-forge mockgpt
+```
 
 ## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+### Running the Flask App
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+Once the package is installed, you can run the Flask application locally. Navigate to your project directory and run the following command:
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+```bash
+flask run
+```
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+By default, the server will be accessible at `http://127.0.0.1:5000`. You can change the host and port by setting the `FLASK_APP` environment variable and specifying the host/port flags.
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+### API Endpoint
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+The `mockgpt` service exposes a single endpoint for interaction:
+
+#### POST /chat
+
+- **Description**: Sends a user message to the mock ChatGPT API and receives a response.
+- **Request Body**:
+    ```json
+    {
+      "message": "Hello, ChatGPT!"
+    }
+    ```
+- **Response**:
+    ```json
+    {
+      "response": "Hello! How can I assist you today?"
+    }
+    ```
+
+#### Example using `curl`
+
+```bash
+curl -X POST http://127.0.0.1:5000/chat -H "Content-Type: application/json" -d '{"message": "Hello, ChatGPT!"}'
+```
+
+Response:
+
+```json
+{
+  "response": "Hello! How can I assist you today?"
+}
+```
+
+#### Example using Python `requests`
+
+```python
+import requests
+
+url = "http://127.0.0.1:5000/chat"
+data = {"message": "Hello, ChatGPT!"}
+
+response = requests.post(url, json=data)
+print(response.json())  # {"response": "Hello! How can I assist you today?"}
+```
+
+### Customizing the Response
+
+You can modify the `mock_chatgpt.py` file to adjust the behavior of the mock responses. The package provides basic static responses, but you can enhance it by adding more sophisticated or dynamic conversation logic.
+
+## Project Structure
+
+```
+mockgpt/
+├── mockgpt/
+│   ├── __init__.py          # Main package entry point
+│   ├── app.py               # Flask app entry point
+│   └── mock_chatgpt.py      # Logic for simulating ChatGPT responses
+├── requirements.txt         # Dependencies for pip
+├── environment.yml          # Conda environment file (if using conda)
+├── setup.py                 # Build and packaging configuration (Setuptools)
+└── README.md                # This README file
+```
+
+## Dependencies
+
+The following dependencies are required for `mockgpt`:
+
+- **Flask**: Web framework for building the web application.
+- **requests**: Optional, for making HTTP requests to interact with the mock API.
+
+To install dependencies via `pip`, run:
+
+```bash
+pip install -r requirements.txt
+```
+
+Or with `conda` (if using the environment file):
+
+```bash
+conda env create -f environment.yml
+```
+
+## Project Status
+
+- **Status**: Active development
+- **Latest Version**: v0.1.0
+- **Features**: The basic functionality is complete, but future versions will include additional mock behaviors and enhanced configurations.
+- **Maintenance**: The project is maintained and actively receives updates.
+- **License**: MIT License
+
+## Contributions
+
+Contributions to `mockgpt` are welcome! If you have suggestions, bug fixes, or new features, feel free to create a pull request. Here's how you can contribute:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/your-feature`).
+3. Make your changes.
+4. Commit your changes (`git commit -am 'Add new feature'`).
+5. Push to the branch (`git push origin feature/your-feature`).
+6. Open a pull request.
+
+If you're submitting an issue, please ensure it follows the [Issue Template](.github/ISSUE_TEMPLATE).
+
+## Credits
+
+- **Author**: [Your Name](https://github.com/yourusername)
+- **Special Thanks**: The Flask and OpenAI communities for their inspiration and resources in building APIs.
+- **Libraries**: This project is built on top of Flask and other open-source libraries that make it easy to build APIs in Python.
 
 ## License
-For open source projects, say how it is licensed.
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
