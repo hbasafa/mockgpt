@@ -1,0 +1,23 @@
+[project]
+name = "mockgpt"
+version = "0.0.1"
+authors = [
+  { name="Hossein Basafa", email="hossein.basafa.hb@gmail.com" },
+]
+description = "A simple mock server as chatgpt"
+readme = "README.md"
+requires-python = ">=3.6"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+license = "GNU-Public-GPL-V3"
+license-files = ["LICEN[CS]E*"]
+
+[project.urls]
+Homepage = "https://github.com/hbasafa/mockgpt"
+Issues = "https://github.com/hbasafa/mockgpt/issues"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
